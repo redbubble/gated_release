@@ -20,10 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
 GatedRelease.get('gate-name').run(
   open: -> { code_to_run_for_open_gate },
   closed: -> { code_to_run_for_closed_gate }
 )
+```
 
 ## Development
 

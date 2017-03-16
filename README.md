@@ -4,6 +4,8 @@ This gem allows you to easily manage split code paths in your application withou
 
 ## Installation
 
+### Gem
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -17,6 +19,15 @@ And then execute:
 Or install it yourself as:
 
     $ gem install gated_release
+
+### Setup
+
+Generate and migrate the installation database migration
+
+```
+$ rails generate gated_release:install
+$ rake db:migrate
+```
 
 ## Usage
 
@@ -35,7 +46,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/gated_release. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/redbubble/gated_release. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

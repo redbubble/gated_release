@@ -34,4 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activerecord", "~> 5.0.2"
   spec.add_development_dependency "sqlite3", "~> 1.3.13"
   spec.add_development_dependency "database_cleaner", "~> 1.5.3"
+  spec.add_development_dependency "generator_spec", "~> 0.9.3"
 end

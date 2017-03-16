@@ -1,3 +1,5 @@
+require "active_record"
+
 module GatedRelease
   class Gate < ActiveRecord::Base
     self.table_name = "gated_release_gates"

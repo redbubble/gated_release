@@ -1,3 +1,4 @@
+require 'active_record'
 require 'rails/generators'
 require 'rails/generators/migration'
 

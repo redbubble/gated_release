@@ -1,4 +1,5 @@
 require "bundler/setup"
+require "active_record"
 require "database_cleaner"
 require "gated_release"
 

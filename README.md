@@ -25,8 +25,8 @@ Or install it yourself as:
 Generate and migrate the installation database migration
 
 ```
-$ rails generate gated_release:install
-$ rake db:migrate
+$ bundle exec rails generate gated_release:install
+$ bundle exec rake db:migrate
 ```
 
 ## Usage

@@ -38,6 +38,15 @@ GatedRelease::Gate.get('gate-name').run(
 )
 ```
 
+```ruby
+# Close the gate on any error from the open code path
+GatedRelease::Gate.get('gate-name').run(
+  open: -> { code_to_run_for_open_gate },
+  closed: -> { code_to_run_for_closed_gate },
+  close_on_error: true
+)
+```
+
 To open the gate:
 ```ruby
 GatedRelease::Gate.get('gate-name').open!

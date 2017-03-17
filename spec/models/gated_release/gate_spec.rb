@@ -163,6 +163,20 @@ describe GatedRelease::Gate do
     end
   end
 
+  describe '.search' do
+
+    it "returns result" do
+      subject
+      expect(described_class.search('y*r')).to eq [subject]
+    end
+
+    it "returns no results for non-matching search term" do
+      subject
+      expect(described_class.search('zzz')).to eq []
+    end
+
+  end
+
   describe '#max_attempts' do
 
     context 'when gate does not exists' do

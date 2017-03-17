@@ -14,6 +14,13 @@ module GatedRelease
     validates :state, inclusion: { in: STATES }
     validates :percent_open, :inclusion => 0..100
 
+    scope :newest_first, -> { order("created_at DESC") }
+
+    def self.search(query)
+      query = "%#{query.tr('*','%')}%"
+      where('name like ?', query).newest_first
+    end
+
     def self.get(name)
       find_or_create_by(name: name)
     end

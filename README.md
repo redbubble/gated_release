@@ -9,7 +9,7 @@ This gem allows you to easily manage split code paths in your application withou
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gated_release', '0.1.0' # see semver.org
+gem 'gated_release', '0.2.0' # see semver.org
 ```
 
 And then execute:
@@ -29,6 +29,14 @@ $ bundle exec rails generate gated_release:install
 $ bundle exec rake db:migrate
 ```
 
+Mount it in your config/routes.rb file
+
+```ruby
+mount GatedRelease::Engine => "/gated_release"
+```
+
+and visit `http://localhost:3000/gated_release`
+
 ## Usage
 
 ```ruby
@@ -46,6 +54,11 @@ GatedRelease::Gate.get('gate-name').run(
   close_on_error: true
 )
 ```
+
+
+### Managing Gates
+Gates can be managed from the page: `http://localhost:3000/gated_release`.
+They can also be manually modified with the following commands:
 
 To open the gate:
 ```ruby

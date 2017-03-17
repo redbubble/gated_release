@@ -1,5 +1,5 @@
 GatedRelease::Engine.routes.draw do
-  resources :gates, only: [:index] do
+  resources :gates, only: [:index], path: '/' do
       member do
         post :open
         post :close

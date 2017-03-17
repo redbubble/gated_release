@@ -32,10 +32,30 @@ $ bundle exec rake db:migrate
 ## Usage
 
 ```ruby
-GatedRelease.get('gate-name').run(
+GatedRelease::Gate.get('gate-name').run(
   open: -> { code_to_run_for_open_gate },
   closed: -> { code_to_run_for_closed_gate }
 )
+```
+
+To open the gate:
+```ruby
+GatedRelease::Gate.get('gate-name').open!
+```
+
+To close the gate
+```ruby
+GatedRelease::Gate.get('gate-name').close!
+```
+
+To put the gate into a limited state, and allow a set number of code executions to go through the open gate before closing.
+```ruby
+GatedRelease::Gate.get('gate-name').limit!.allow_more!(10)
+```
+
+To put the gate into 'percentage' state, where a set percentage of code executions will go throught he open gate.
+```ruby
+GatedRelease::Gate.get('gate-name').percentage!(10)
 ```
 
 ## Development

@@ -18,22 +18,27 @@ module GatedRelease
 
     def allow_more!(count)
       increment!(:max_attempts, count)
+      self
     end
 
     def open!
       update_attributes!(state: OPEN)
+      self
     end
 
     def close!
       update_attributes!(state: CLOSED)
+      self
     end
 
     def limit!
       update_attributes!(state: LIMITED)
+      self
     end
 
     def percentage!(value)
       update_attributes!(state: PERCENTAGE, percent_open: value)
+      self
     end
 
     def run(args)
@@ -59,13 +64,18 @@ module GatedRelease
     end
 
     def get_open_code(args)
-      return args[:open] if args.has_key?(:open)
-      raise KeyError.new("key not found: :open for gated release: #{name}")
+      get_arg(args, :open)
     end
 
     def get_closed_code(args)
-      return args[:closed] if args.has_key?(:closed)
-      raise KeyError.new("key not found: :closed for gated release: #{name}")
+      get_arg(args, :closed)
+    end
+
+    def get_arg(args, key)
+      unless args.has_key?(key)
+        raise KeyError.new("key not found: :#{key} for gated release: #{name}")
+      end
+      args[key]
     end
 
     def increment_attempts

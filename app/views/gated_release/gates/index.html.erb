@@ -1,4 +1,4 @@
-<div class="simple-index">
+<div id="gates">
   <h2 class="gated-release-heading">Gated Releases <%= "-- Results for \"#{params[:q]}\"" unless params[:q].blank? %></h2>
   <%= form_tag gates_path, method: 'GET', class: "gated-release-search-form" do %>
     <%= text_field_tag :q, params[:q] %>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <% @gates.each_with_index do |gate, index| %>
-        <%= content_tag 'tr', :class => (index % 2 == 0) ? 'even' : 'odd' do %>
+        <%= content_tag 'tr' do %>
           <td><%= gate.name %></td>
           <td><%= gate_state(gate) %></td>
           <td><%= gate.attempts %></td>
@@ -26,12 +26,12 @@
           <td>
             <% unless gate.state == 'open' %>
               <%= form_for gate, :url => open_gate_path(gate), :html => {:method => :post, style: 'float: left'} do |f| %>
-                <%= submit_tag 'Open Gate', :class => 'rb-button green', data: {confirm: "This will open the gate. Proceed?"} %>
+                <%= submit_tag 'Open Gate', :class => 'green', data: {confirm: "This will open the gate. Proceed?"} %>
               <% end %>
             <% end %>
             <% unless gate.state == 'closed' %>
               <%= form_for gate, :url => close_gate_path(gate), :html => {:method => :post} do |f| %>
-                <%= submit_tag 'Close Gate', :class => 'rb-button red', data: {confirm: "This will close the gate. Proceed?"} %>
+                <%= submit_tag 'Close Gate', :class => 'red', data: {confirm: "This will close the gate. Proceed?"} %>
               <% end %>
             <% end %>
           </td>
@@ -41,11 +41,11 @@
 
                 <%= label_tag :more, "Amount to increment" %>
                 <%= number_field_tag :more, '', min: 1 %>
-                <%= submit_tag 'Allow More', :class => 'rb-button green', data: {confirm: "This will open the gate for x more executions. Proceed?"} %>
+                <%= submit_tag 'Allow More', :class => 'green', data: {confirm: "This will open the gate for x more executions. Proceed?"} %>
               <% end %>
             <% else %>
               <%= form_for gate, :url => limit_gate_path(gate), :html => {:method => :post} do |f| %>
-                <%= submit_tag 'Limit Gate', :class => 'rb-button', data: {confirm: "This will set the gate to limited mode. Proceed?"} %>
+                <%= submit_tag 'Limit Gate', data: {confirm: "This will set the gate to limited mode. Proceed?"} %>
               <% end %>
             <% end %>
           </td>
@@ -54,7 +54,7 @@
 
               <%= label_tag :value, "Set to" %>
               <%= number_field_tag :value, gate.percent_open, within: 0..100 %>
-              <%= submit_tag 'Percentage', :class => 'rb-button', data: {confirm: "This will open the gate for x% of executions. Proceed?"} %>
+              <%= submit_tag 'Percentage', data: {confirm: "This will open the gate for x% of executions. Proceed?"} %>
             <% end %>
           </td>
         <% end %>

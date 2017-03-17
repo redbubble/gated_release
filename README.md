@@ -85,6 +85,10 @@ To put the gate into 'percentage' state, where a set percentage of code executio
 GatedRelease::Gate.get('gate-name').percentage!(10)
 ```
 
+## Credits
+
+Thanks to John Sardine for the table css: http://johnsardine.com/freebies/dl-html-css/simple-little-tab/
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

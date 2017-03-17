@@ -9,7 +9,7 @@ This gem allows you to easily manage split code paths in your application withou
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gated_release'
+gem 'gated_release', '0.1.0' # see semver.org
 ```
 
 And then execute:

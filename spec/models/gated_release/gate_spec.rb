@@ -1,5 +1,4 @@
 require "spec_helper"
-require "gated_release"
 
 describe GatedRelease::Gate do
   describe "#get" do

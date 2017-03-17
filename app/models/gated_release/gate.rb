@@ -1,7 +1,7 @@
 require "active_record"
 
 module GatedRelease
-  class Gate < ActiveRecord::Base
+  class Gate < ApplicationRecord
     self.table_name = "gated_release_gates"
 
     OPEN = 'open'

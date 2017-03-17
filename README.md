@@ -1,5 +1,8 @@
 # GatedRelease
 
+[![Build Status](https://travis-ci.org/redbubble/gated_release.svg?branch=master)](https://travis-ci.org/redbubble/gated_release)
+[![Code Climate](https://codeclimate.com/github/redbubble/gated_release.svg)](https://codeclimate.com/github/redbubble/gated/release)
+
 This gem allows you to easily manage split code paths in your application without redeploys.
 
 ## Installation

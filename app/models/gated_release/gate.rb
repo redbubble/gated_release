@@ -67,7 +67,7 @@ module GatedRelease
 
     def run_open_code(args)
       get_open_code(args).call
-    rescue StandardError, ScriptError => e
+    rescue StandardError, ScriptError
       close! if args[:close_on_error]
       raise
     end

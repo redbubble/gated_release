@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gated_release (0.1.0)
+    gated_release (0.2.0)
       activerecord (>= 4.0, < 6)
       rails (>= 4.0, < 6)
 

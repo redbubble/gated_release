@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gated release</title>
+  <%= stylesheet_link_tag    "gated_release/application", media: "all" %>
+  <%= javascript_include_tag "gated_release/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

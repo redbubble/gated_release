@@ -1,7 +1,7 @@
 require "active_record"
 
 module GatedRelease
-  class Gate < ActiveRecord::Base
+  class Gate < ApplicationRecord
     self.table_name = "gated_release_gates"
 
     OPEN = 'open'
@@ -13,6 +13,13 @@ module GatedRelease
     validates_uniqueness_of :name
     validates :state, inclusion: { in: STATES }
     validates :percent_open, :inclusion => 0..100
+
+    scope :newest_first, -> { order("created_at DESC") }
+
+    def self.search(query)
+      query = "%#{query.tr('*','%')}%"
+      where('name like ?', query).newest_first
+    end
 
     def self.get(name)
       find_or_create_by(name: name)
@@ -60,7 +67,7 @@ module GatedRelease
 
     def run_open_code(args)
       get_open_code(args).call
-    rescue StandardError, ScriptError => e
+    rescue StandardError, ScriptError
       close! if args[:close_on_error]
       raise
     end

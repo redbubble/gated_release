@@ -1,5 +1,10 @@
 # GatedRelease
 
+[![Gem Version](https://badge.fury.io/rb/gated_release.svg)](http://badge.fury.io/rb/gated_release)
+[![Build Status](https://travis-ci.org/redbubble/gated_release.svg?branch=master)](https://travis-ci.org/redbubble/gated_release)
+[![Code Climate](https://codeclimate.com/github/redbubble/gated_release.svg)](https://codeclimate.com/github/redbubble/gated/release)
+[![Inline docs](http://inch-ci.org/github/redbubble/gated_release.svg?branch=master)](http://inch-ci.org/github/redbubble/gated_release)
+
 This gem allows you to easily manage split code paths in your application without redeploys.
 
 ## Installation
@@ -9,7 +14,7 @@ This gem allows you to easily manage split code paths in your application withou
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gated_release', '0.1.0' # see semver.org
+gem 'gated_release', '0.2.0' # see semver.org
 ```
 
 And then execute:
@@ -29,6 +34,14 @@ $ bundle exec rails generate gated_release:install
 $ bundle exec rake db:migrate
 ```
 
+Mount it in your config/routes.rb file
+
+```ruby
+mount GatedRelease::Engine => "/gated_release"
+```
+
+and visit `http://localhost:3000/gated_release`
+
 ## Usage
 
 ```ruby
@@ -37,6 +50,20 @@ GatedRelease::Gate.get('gate-name').run(
   closed: -> { code_to_run_for_closed_gate }
 )
 ```
+
+```ruby
+# Close the gate on any error from the open code path
+GatedRelease::Gate.get('gate-name').run(
+  open: -> { code_to_run_for_open_gate },
+  closed: -> { code_to_run_for_closed_gate },
+  close_on_error: true
+)
+```
+
+
+### Managing Gates
+Gates can be managed from the page: `http://localhost:3000/gated_release`.
+They can also be manually modified with the following commands:
 
 To open the gate:
 ```ruby
@@ -57,6 +84,10 @@ To put the gate into 'percentage' state, where a set percentage of code executio
 ```ruby
 GatedRelease::Gate.get('gate-name').percentage!(10)
 ```
+
+## Credits
+
+Thanks to John Sardine for the table css: http://johnsardine.com/freebies/dl-html-css/simple-little-tab/
 
 ## Development
 

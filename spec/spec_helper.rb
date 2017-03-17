@@ -1,7 +1,9 @@
 require "bundler/setup"
 require "active_record"
 require "database_cleaner"
-require "gated_release"
+
+# Load the dummy app
+require File.expand_path("../dummy/config/environment.rb", __FILE__)
 
 # Create an in-memory database and run our template migration
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")

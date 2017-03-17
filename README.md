@@ -1,8 +1,9 @@
 # GatedRelease
 
+[![Gem Version](https://badge.fury.io/rb/gated_release.svg)](http://badge.fury.io/rb/gated_release)
 [![Build Status](https://travis-ci.org/redbubble/gated_release.svg?branch=master)](https://travis-ci.org/redbubble/gated_release)
 [![Code Climate](https://codeclimate.com/github/redbubble/gated_release.svg)](https://codeclimate.com/github/redbubble/gated/release)
-[![Gem Version](https://badge.fury.io/rb/gated_release.svg)](http://badge.fury.io/rb/gated_release)
+[![Inline docs](http://inch-ci.org/github/redbubble/gated_release.svg?branch=master)](http://inch-ci.org/github/redbubble/gated_release)
 
 This gem allows you to easily manage split code paths in your application without redeploys.
 
